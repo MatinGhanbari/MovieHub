@@ -1,3 +1,4 @@
 # MovieHub
 Movies for free of all genres!
-![image](https://github.com/user-attachments/assets/b0679fba-3ad7-4060-85da-be69e83a79a1)
+
+![image](https://github.com/user-attachments/assets/173ab68f-9468-41fa-9179-4703e1b51a56)
