@@ -85,8 +85,8 @@ async function generateDownloadLinks(imdbID, year, type) {
         //     linksHtml += `<span class="text-danger">Download links are unavailable</span><br>`;
         // }
 
-        linksHtml += `<a href="${originalDownloadLink}" class="btn btn-primary mb-2">Download</a><br>`;
-        linksHtml += `<a href="${backupDownloadLink}" class="btn btn-secondary mb-2">Backup Link</a><br>`;
+        linksHtml += `<a href="${originalDownloadLink}" target="_blank" class="btn btn-primary mb-2">Download</a><br>`;
+        linksHtml += `<a href="${backupDownloadLink}" target="_blank" class="btn btn-secondary mb-2">Backup Link</a><br>`;
 
         return linksHtml;
     } else if (type === "series") {
@@ -101,12 +101,12 @@ function generateSeriesDownloadLinks(imdbID) {
     for (let i = 1; i <= 4; i++) {
         seasonsHtml += `
             <div class="accordion-item">
-                <h2 class="accordion-header" id="heading${i}">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${i}" aria-expanded="true" aria-controls="collapse${i}">
-                        S${i}
+                <h2 class="accordion-header" id="heading${imdbID}-${i}">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${imdbID}-${i}" aria-expanded="false" aria-controls="collapse${imdbID}-${i}">
+                        Season ${i}
                     </button>
                 </h2>
-                <div id="collapse${i}" class="accordion-collapse collapse" aria-labelledby="heading${i}" data-bs-parent="#seasonsAccordion">
+                <div id="collapse${imdbID}-${i}" class="accordion-collapse collapse" aria-labelledby="heading${imdbID}-${i}" data-bs-parent="#seasonsAccordion">
                     <div class="accordion-body">
                         ${generateQualityLinks(imdbID, i)}
                     </div>
@@ -119,12 +119,12 @@ function generateSeriesDownloadLinks(imdbID) {
 }
 
 function generateQualityLinks(imdbID, season) {
-    let qualityLinks = "";
-    for (let quality = 1; quality <= 4; quality++) {
-        const downloadLink = `https://subtitle.saymyname.website/DL/filmgir/?i=tt${imdbID}&f=${season}&q=${quality}`;
-        qualityLinks += `<a href="${downloadLink}" class="btn btn-success mb-2">${season} - ${quality}</a><br>`;
-    }
-    return qualityLinks;
+  let qualityLinks = "";
+  for (let quality = 1; quality <= 4; quality++) {
+    const downloadLink = `https://subtitle.saymyname.website/DL/filmgir/?i=tt${imdbID}&f=${season}&q=${quality}`;
+    qualityLinks += `<a href="${downloadLink}" target="_blank" class="btn btn-primary mb-2">S${season} - Quality ${quality}</a><br>`;
+  }
+  return qualityLinks;
 }
 
 document.getElementById('searchForm').addEventListener('submit', function (event) {
