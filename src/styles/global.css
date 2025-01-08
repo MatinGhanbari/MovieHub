@@ -27,7 +27,7 @@ html, body {
     text-align: var(--text-align-left);
     background-color: var(--background-color-light);
     color: var(--text-color-light);
-    background-image: url('https://unsplash.com/photos/kr67X9ralR0/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8Nnx8d2hpdGV8ZW58MHx8fHwxNzM2Mjk2MzI3fDA&force=true');
+    background-image: url('https://raw.githubusercontent.com/MatinGhanbari/MovieHub/refs/heads/main/assets/images/background.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -128,6 +128,6 @@ h1 {
     margin: 0;
 }
 
-.card-img-top{
+.card-img-top {
     /*height: 300px;*/
 }
