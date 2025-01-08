@@ -1,0 +1,133 @@
+:root {
+    --height-full: 100%;
+    --flex-column: column;
+    --font-family: "Nunito", sans-serif;
+    --direction-ltr: ltr;
+    --text-align-left: left;
+    --background-color-light: rgba(255, 255, 255, 0);
+    --text-color-light: #000000;
+    --text-color-dark: #ffffff;
+    --footer-padding: 10px 0;
+    --footer-font-size: 0.875rem;
+    --logo-height: 50px;
+    --logo-margin-left: 10px;
+    --container-padding: 20px;
+    --container-padding-mobile: 0 15px;
+    --h1-font-size-mobile: 1.5rem;
+}
+
+html, body {
+    height: var(--height-full);
+    margin: 0;
+    display: flex;
+    overflow-x: hidden;
+    flex-direction: var(--flex-column);
+    font-family: var(--font-family);
+    direction: var(--direction-ltr);
+    text-align: var(--text-align-left);
+    background-color: var(--background-color-light);
+    color: var(--text-color-light);
+    background-image: url('https://unsplash.com/photos/kr67X9ralR0/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8Nnx8d2hpdGV8ZW58MHx8fHwxNzM2Mjk2MzI3fDA&force=true');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    backdrop-filter: blur(10px);
+    min-height: 100vh;
+}
+
+.glass-background {
+    backdrop-filter: blur(10px); /* Apply blur effect to the background */
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent white background */
+    border-radius: 15px; /* Rounded corners */
+    padding: 20px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border: 1px solid rgba(255, 255, 255, 0.5); /* Light border */
+    text-align: center;
+    max-width: 300px; /* Set a max width for the card */
+}
+
+.glass-card button {
+    background: rgba(255, 255, 255, 0.3); /* Semi-transparent button background */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.glass-card button:hover {
+    background: rgba(255, 255, 255, 0.5); /* Change background on hover */
+}
+
+header {
+    background-color: var(--background-color-light);
+}
+
+.app {
+    width: var(--height-full);
+    height: var(--height-full);
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    height: 5em;
+}
+
+.logo {
+    /* Add logo styles here if needed */
+}
+
+footer {
+    bottom: 0;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: var(--height-full);
+    background-color: var(--background-color-light);
+}
+
+.container {
+    flex: 1;
+    padding: var(--container-padding);
+}
+
+.social-icons a {
+    margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: var(--h1-font-size-mobile);
+    }
+
+    .container {
+        padding: var(--container-padding-mobile);
+    }
+
+    footer {
+        font-size: var(--footer-font-size);
+    }
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.logo-container img {
+    height: var(--logo-height);
+    margin-left: var(--logo-margin-left);
+}
+
+h1 {
+    margin: 0;
+}
+
+.card-img-top{
+    /*height: 300px;*/
+}
