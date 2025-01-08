@@ -9,7 +9,7 @@ async function fetchWithToken(title) {
 
         if (data.Response === "True") {
             let moviesHtml = '<div class="row">';
-            data.Search.forEach((movie) => {
+            for (const movie of data.Search) {
                 const poster = movie.Poster !== "N/A" ? movie.Poster : "https://raw.githubusercontent.com/MatinGhanbari/MovieHub/refs/heads/main/assets/images/default.png";
                 const imdbID = movie.imdbID.replace("tt", "");
 
@@ -22,12 +22,12 @@ async function fetchWithToken(title) {
                                     <div class="card-body">
                                         <h5 class="card-title">${movie.Title}</h5>
                                         <p class="card-text">Year: ${movie.Year}</p>
-                                        ${generateDownloadLinks(imdbID, movie.Year, movie.Type)}
+                                        ${await generateDownloadLinks(imdbID, movie.Year, movie.Type)}
                                     </div>
                                 </div>
                             </div>
                         `;
-            });
+            }
             moviesHtml += "</div>";
             resultsContainer.innerHTML = moviesHtml;
 
@@ -50,20 +50,51 @@ document
         });
     });
 
-function generateDownloadLinks(imdbID, year, type) {
-    if (type === "movie") {
-        const originalDownloadLink = `https://tokyo.saymyname.website/Movies/${year}/${imdbID}`;
-        const backupDownloadLink = `https://berlin.saymyname.website/Movies/${year}/${imdbID}`;
+async function checkLinkAvailability(url) {
+    const headers = {
+        'accept': '*/*', 'cache-control': 'no-cache', 'pragma': 'no-cache',
+    };
 
-        return `
-            <a href="${originalDownloadLink}" class="btn btn-primary mb-2">Download</a><br>
-            <a href="${backupDownloadLink}" class="btn btn-secondary mb-2">Download - Backup Link</a><br>
-        `;
+    try {
+        const response = await fetch(url, {
+            method: 'GET', headers: headers, credentials: 'include',
+        });
+        return response.status !== 404;
+    } catch (error) {
+        return false;
+    }
+}
+
+async function generateDownloadLinks(imdbID, year, type) {
+    if (type === "movie") {
+        const originalDownloadLink = `https://tokyo.saymyname.website/Movies/${year}/${imdbID}/`;
+        const backupDownloadLink = `https://berlin.saymyname.website/Movies/${year}/${imdbID}/`;
+
+        let linksHtml = '';
+
+
+        // const originalAvailable = await checkLinkAvailability(originalDownloadLink);
+        // const backupAvailable = await checkLinkAvailability(backupDownloadLink);
+        // if (originalAvailable) {
+        //     linksHtml += `<a href="${originalDownloadLink}" class="btn btn-primary mb-2">Download</a><br>`;
+        // }
+        // if (backupAvailable) {
+        //     linksHtml += `<a href="${backupDownloadLink}" class="btn btn-secondary mb-2">Download - Backup Link</a><br>`;
+        // }
+        // if (!originalAvailable && !backupAvailable) {
+        //     linksHtml += `<span class="text-danger">Download links are unavailable</span><br>`;
+        // }
+
+        linksHtml += `<a href="${originalDownloadLink}" class="btn btn-primary mb-2">Download</a><br>`;
+        linksHtml += `<a href="${backupDownloadLink}" class="btn btn-secondary mb-2">Backup Link</a><br>`;
+
+        return linksHtml;
     } else if (type === "series") {
         return generateSeriesDownloadLinks(imdbID);
     }
     return "";
 }
+
 
 function generateSeriesDownloadLinks(imdbID) {
     let seasonsHtml = '<div class="accordion" id="seasonsAccordion">';
@@ -72,7 +103,7 @@ function generateSeriesDownloadLinks(imdbID) {
             <div class="accordion-item">
                 <h2 class="accordion-header" id="heading${i}">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${i}" aria-expanded="true" aria-controls="collapse${i}">
-                        فصل ${i}
+                        S${i}
                     </button>
                 </h2>
                 <div id="collapse${i}" class="accordion-collapse collapse" aria-labelledby="heading${i}" data-bs-parent="#seasonsAccordion">
