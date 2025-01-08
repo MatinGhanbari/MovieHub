@@ -10,14 +10,14 @@ async function fetchWithToken(title) {
         if (data.Response === "True") {
             let moviesHtml = '<div class="row">';
             data.Search.forEach((movie) => {
-                const poster = movie.Poster !== "N/A" ? movie.Poster : "/assets/images/default.png";
+                const poster = movie.Poster !== "N/A" ? movie.Poster : "https://raw.githubusercontent.com/MatinGhanbari/MovieHub/refs/heads/main/assets/images/default.png";
                 const imdbID = movie.imdbID.replace("tt", "");
 
                 moviesHtml += `
                             <div class="col-6 col-md-4 col-lg-2 mb-4 glass-background ">
                                 <div class="glass-card">
                                     <a href="${poster}" target="_blank">
-                                        <img src="${poster}" class="card-img-top" alt="${movie.Title}" onerror="this.onerror=null; this.src='/assets/images/default.png';">
+                                        <img src="${poster}" class="card-img-top" alt="${movie.Title}" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/MatinGhanbari/MovieHub/refs/heads/main/assets/images/default.png';">
                                     </a>
                                     <div class="card-body">
                                         <h5 class="card-title">${movie.Title}</h5>
