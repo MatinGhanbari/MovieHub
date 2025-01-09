@@ -116,11 +116,11 @@ document.getElementById('searchForm').addEventListener('submit', function (event
     event.preventDefault();
     const title = document.getElementById('title').value;
     const resultsDiv = document.getElementById('results');
-
+    
     if (title.trim())
-        resultsDiv.innerHTML = `<embed src="https://raw.githubusercontent.com/MatinGhanbari/MovieHub/refs/heads/main/assets/svg/infinite-spinner.svg"/> Searching: ${title}...`;
+        resultsDiv.innerHTML = `<i class='fa-solid fa-magnifying-glass'></i> Searching: ${title} ...`;
     else 
-        resultsDiv.innerHTML = 'Enter the movie name: ';
+        resultsDiv.innerHTML = 'Please Enter the movie name!';
 });
 
 document.getElementById("searchForm")
