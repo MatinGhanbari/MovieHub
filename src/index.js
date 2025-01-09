@@ -14,15 +14,19 @@ async function fetchWithToken(title) {
                 const imdbID = movie.imdbID.replace("tt", "");
 
                 moviesHtml += `
-                            <div class="col-6 col-md-4 col-lg-2 mb-4 glass-background ">
+                            <div class="col-6 col-md-4 col-lg-2 mb-4 glass-background">
                                 <div class="glass-card">
                                     <a href="${poster}" target="_blank">
                                         <img src="${poster}" class="card-img-top" alt="${movie.Title}" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/MatinGhanbari/MovieHub/refs/heads/main/assets/images/default.png';">
                                     </a>
                                     <div class="card-body">
-                                        <h5 class="card-title">${movie.Title}</h5>
-                                        <p class="card-text">Year: ${movie.Year}</p>
-                                        ${await generateDownloadLinks(imdbID, movie.Year, movie.Type)}
+                                        <div>
+                                            <h4 class="card-title" style="margin-top:10px">${movie.Title}</h4>
+                                            <p class="card-text">Year: ${movie.Year}</p>
+                                        </div>
+                                        <div style="min-width:90%">
+                                            ${await generateDownloadLinks(imdbID, movie.Year, movie.Type)}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -51,15 +55,10 @@ document
     });
 
 async function checkLinkAvailability(url) {
-    const headers = {
-        'accept': '*/*', 'cache-control': 'no-cache', 'pragma': 'no-cache',
-    };
-
     try {
-        const response = await fetch(url, {
-            method: 'GET', headers: headers, credentials: 'include',
-        });
-        return response.status !== 404;
+        const response = await fetch(url);
+        console.log(response.status);
+        return response.status != 404;
     } catch (error) {
         return false;
     }
@@ -71,7 +70,6 @@ async function generateDownloadLinks(imdbID, year, type) {
         const backupDownloadLink = `https://berlin.saymyname.website/Movies/${year}/${imdbID}/`;
 
         let linksHtml = '';
-
 
         // const originalAvailable = await checkLinkAvailability(originalDownloadLink);
         // const backupAvailable = await checkLinkAvailability(backupDownloadLink);
@@ -90,15 +88,21 @@ async function generateDownloadLinks(imdbID, year, type) {
 
         return linksHtml;
     } else if (type === "series") {
-        return generateSeriesDownloadLinks(imdbID);
+        return await generateSeriesDownloadLinks(imdbID);
     }
     return "";
 }
 
 
-function generateSeriesDownloadLinks(imdbID) {
+async function generateSeriesDownloadLinks(imdbID) {
     let seasonsHtml = '<div class="accordion" id="seasonsAccordion">';
-    for (let i = 1; i <= 4; i++) {
+    
+    var movieData = await getMovieFullDetails(imdbID);
+    var seasons = movieData['totalSeasons'];
+
+    for (let i = 1; i <= seasons; i++) {
+        links = await generateQualityLinks(imdbID, i);
+
         seasonsHtml += `
             <div class="accordion-item">
                 <h2 class="accordion-header" id="heading${imdbID}-${i}">
@@ -108,7 +112,7 @@ function generateSeriesDownloadLinks(imdbID) {
                 </h2>
                 <div id="collapse${imdbID}-${i}" class="accordion-collapse collapse" aria-labelledby="heading${imdbID}-${i}" data-bs-parent="#seasonsAccordion">
                     <div class="accordion-body">
-                        ${generateQualityLinks(imdbID, i)}
+                        ${links}
                     </div>
                 </div>
             </div>
@@ -118,7 +122,21 @@ function generateSeriesDownloadLinks(imdbID) {
     return seasonsHtml;
 }
 
-function generateQualityLinks(imdbID, season) {
+async function getMovieFullDetails(imdbID) {
+    
+    try {
+        let url = `https://www.omdbapi.com/?apikey=abb7cdf7&i=tt${imdbID}&plot=full`;
+
+        const response = await fetch(url);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Fetch error:', error);
+        return null;
+    }
+}
+
+async function generateQualityLinks(imdbID, season) {
   let qualityLinks = "";
   for (let quality = 1; quality <= 4; quality++) {
     const downloadLink = `https://subtitle.saymyname.website/DL/filmgir/?i=tt${imdbID}&f=${season}&q=${quality}`;
