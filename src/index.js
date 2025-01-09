@@ -5,7 +5,6 @@ async function fetchWithToken(title) {
         const response = await fetch(url);
         const data = await response.json();
         const resultsContainer = document.getElementById("results");
-        resultsContainer.innerHTML = "";
 
         if (data.Response === "True") {
             let moviesHtml = '<div class="row">';
@@ -34,10 +33,9 @@ async function fetchWithToken(title) {
             }
             moviesHtml += "</div>";
             resultsContainer.innerHTML = moviesHtml;
-
             resultsContainer.scrollIntoView({behavior: "smooth"});
         } else {
-            resultsContainer.innerHTML = '<div class="alert alert-danger">Not found!</div>';
+            resultsContainer.innerHTML = '<div class="alert alert-danger">Movie not found!</div>';
         }
     } catch (error) {
         console.error("Error: ", error);
@@ -45,24 +43,6 @@ async function fetchWithToken(title) {
     }
 }
 
-document
-    .getElementById("searchForm")
-    .addEventListener("submit", function (event) {
-        event.preventDefault();
-        const title = document.getElementById("title").value.trim();
-        fetchWithToken(title).then(r => {
-        });
-    });
-
-async function checkLinkAvailability(url) {
-    try {
-        const response = await fetch(url);
-        console.log(response.status);
-        return response.status != 404;
-    } catch (error) {
-        return false;
-    }
-}
 
 async function generateDownloadLinks(imdbID, year, type) {
     if (type === "movie") {
@@ -70,25 +50,12 @@ async function generateDownloadLinks(imdbID, year, type) {
         const backupDownloadLink = `https://berlin.saymyname.website/Movies/${year}/${imdbID}/`;
 
         let linksHtml = '';
-
-        // const originalAvailable = await checkLinkAvailability(originalDownloadLink);
-        // const backupAvailable = await checkLinkAvailability(backupDownloadLink);
-        // if (originalAvailable) {
-        //     linksHtml += `<a href="${originalDownloadLink}" class="btn btn-primary mb-2">Download</a><br>`;
-        // }
-        // if (backupAvailable) {
-        //     linksHtml += `<a href="${backupDownloadLink}" class="btn btn-secondary mb-2">Download - Backup Link</a><br>`;
-        // }
-        // if (!originalAvailable && !backupAvailable) {
-        //     linksHtml += `<span class="text-danger">Download links are unavailable</span><br>`;
-        // }
-
         linksHtml += `<a href="${originalDownloadLink}" target="_blank" class="btn btn-primary mb-2">Download</a><br>`;
         linksHtml += `<a href="${backupDownloadLink}" target="_blank" class="btn btn-secondary mb-2">Backup Link</a><br>`;
 
         return linksHtml;
     } else if (type === "series") {
-        return await generateSeriesDownloadLinks(imdbID);
+        return generateSeriesDownloadLinks(imdbID);
     }
     return "";
 }
@@ -150,13 +117,16 @@ document.getElementById('searchForm').addEventListener('submit', function (event
     const title = document.getElementById('title').value;
     const resultsDiv = document.getElementById('results');
 
-    if (title.trim()) {
-        resultsDiv.innerHTML = `Searching: ${title}...`;
-
-        // setTimeout(function () {
-        //     resultsDiv.innerHTML = `Results: ${title}`;
-        // }, 1000);
-    } else {
+    if (title.trim())
+        resultsDiv.innerHTML = `<embed src="https://raw.githubusercontent.com/MatinGhanbari/MovieHub/refs/heads/main/assets/svg/infinite-spinner.svg"/> Searching: ${title}...`;
+    else 
         resultsDiv.innerHTML = 'Enter the movie name: ';
-    }
 });
+
+document.getElementById("searchForm")
+        .addEventListener("submit", function (event) {
+            event.preventDefault();
+            const title = document.getElementById("title").value.trim();
+            fetchWithToken(title).then(r => {
+            });
+        });

@@ -9,7 +9,7 @@
     --text-color-dark: #ffffff;
     --footer-padding: 10px 0;
     --footer-font-size: 0.875rem;
-    --logo-height: 50px;
+    --logo-height: 80px;
     --logo-margin-left: 10px;
     --container-padding: 20px;
     --container-padding-mobile: 0 15px;
@@ -130,7 +130,6 @@ footer {
 
 .logo-container img {
     height: var(--logo-height);
-    margin-left: var(--logo-margin-left);
 }
 
 h1 {
