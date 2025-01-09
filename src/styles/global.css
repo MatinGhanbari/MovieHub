@@ -10,7 +10,7 @@
     --text-color-dark: #ffffff;
     --footer-padding: 10px 0;
     --footer-font-size: 0.875rem;
-    --logo-height: 80px;
+    --logo-height: 4rem;
     --logo-margin-left: 10px;
     --container-padding: 20px;
     --container-padding-mobile: 0 15px;
@@ -36,7 +36,6 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    backdrop-filter: blur(10px);
     min-height: 100vh;
 }
 
@@ -54,6 +53,11 @@ body {
     max-width: 300px; /* Set a max width for the card */
     flex-grow: 1;
     /* height: 100%; */
+}
+
+body.dark .glass-card {
+    background: rgba(0, 0, 0, 0.2); /* Semi-transparent white background */
+    border: 1px solid rgba(255, 255, 255, 0); /* Light border */
 }
 
 .glass-card button {
@@ -82,16 +86,6 @@ header {
 .app {
     width: var(--height-full);
     height: var(--height-full);
-}
-
-.logo-container {
-    display: flex;
-    justify-content: center;
-    height: 5em;
-}
-
-.logo {
-    /* Add logo styles here if needed */
 }
 
 footer {
@@ -128,9 +122,15 @@ footer {
 
 .logo-container {
     display: flex;
+    justify-content: center;
+    display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+    height: 5em;
+}
+
+.logo {
+    /* Add logo styles here if needed */
 }
 
 .logo-container img {
@@ -146,7 +146,7 @@ h1 {
 }
 
 .nav {
-    max-width: 968px;
+    max-width: 80%;
     height: calc(var(--header-height) + 1.5rem);
     column-gap: 1rem;
     display: flex;
@@ -156,15 +156,18 @@ h1 {
 
   
 body.dark {
-    background-color: var(--background-color-dark);
     color: var(--text-color-dark);
+    background-color: var(--background-color-dark);
     background-image: url('https://raw.githubusercontent.com/MatinGhanbari/MovieHub/refs/heads/main/assets/images/background-dark.jpg');
 } 
 
-body.dark h1, body.dark .support a {color: #fff;}
+body.dark h1, body.dark .support a {
+    color: #ffffff;
+}
 
 .checkbox {
   opacity: 0;
+  display: none;
   position: absolute;
 }
 
@@ -193,9 +196,57 @@ body.dark h1, body.dark .support a {color: #fff;}
   left: 2px;
   top: 2px;
   border-radius: 50%;
-  transition: transform 0.2s linear;
+  transition: transform 0.5s ease;
 }
 
 .checkbox:checked + .checkbox-label .ball {
   transform: translateX(24px);
+}
+
+body.dark a{
+    color: #e9e9e9;
+}
+
+body.dark .alert-info{
+    color: #000000;
+}
+
+body.dark .alert-info a{
+    color: rgb(36, 36, 36);
+}
+
+body.dark .alert-light{
+    color: #000000;
+}
+
+body.dark .alert-light a{
+    color:  rgb(36, 36, 36);
+}
+
+body.dark .btn-primary{
+    background-color: rgb(2, 74, 217);
+    border-color:  rgb(2, 74, 217);
+}
+
+body.dark .btn-primary a{
+    color: #000000;
+}
+
+body.dark .accordion{
+    background-color: transparent;
+    color: transparent;
+}
+
+body.dark .accordion-button{
+    background-color:  rgb(197, 197, 197);
+}
+
+.accordion-item{
+    padding: 1px;
+    background-color: transparent;
+    border: 1px solid rgb(212, 212, 212);
+}
+
+body.dark .accordion-item{
+    border: transparent
 }

@@ -19,7 +19,7 @@ async function fetchWithToken(title) {
                                         <img src="${poster}" class="card-img-top" alt="${movie.Title}" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/MatinGhanbari/MovieHub/refs/heads/main/assets/images/default.png';">
                                     </a>
                                     <div class="card-body">
-                                        <div>
+                                        <div style="margin-bottom: 10px">
                                             <h4 class="card-title" style="margin-top:10px">${movie.Title}</h4>
                                             <p class="card-text">Year: ${movie.Year}</p>
                                         </div>
@@ -67,6 +67,8 @@ async function generateSeriesDownloadLinks(imdbID) {
     var movieData = await getMovieFullDetails(imdbID);
     var seasons = movieData['totalSeasons'];
 
+    console.log(seasons);
+
     for (let i = 1; i <= seasons; i++) {
         links = await generateQualityLinks(imdbID, i);
 
@@ -85,6 +87,11 @@ async function generateSeriesDownloadLinks(imdbID) {
             </div>
         `;
     }
+
+    if(seasons <= 0 || seasons === "N/A"){
+        seasonsHtml += `<span class="text-danger">Download links are unavailable</span><br>`;
+    }
+
     seasonsHtml += "</div>";
     return seasonsHtml;
 }
