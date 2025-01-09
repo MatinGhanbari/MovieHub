@@ -116,7 +116,7 @@ document.getElementById('searchForm').addEventListener('submit', function (event
     event.preventDefault();
     const title = document.getElementById('title').value;
     const resultsDiv = document.getElementById('results');
-    
+
     if (title.trim())
         resultsDiv.innerHTML = `<i class='fa-solid fa-magnifying-glass'></i> Searching: ${title} ...`;
     else 
@@ -130,3 +130,8 @@ document.getElementById("searchForm")
             fetchWithToken(title).then(r => {
             });
         });
+
+const checkbox = document.getElementById("checkbox")
+checkbox.addEventListener("change", () => {
+document.body.classList.toggle("dark")
+})

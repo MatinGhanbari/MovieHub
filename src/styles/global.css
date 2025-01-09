@@ -5,6 +5,7 @@
     --direction-ltr: ltr;
     --text-align-left: left;
     --background-color-light: rgba(255, 255, 255, 0);
+    --background-color-dark: rgb(0, 0, 0);
     --text-color-light: #000000;
     --text-color-dark: #ffffff;
     --footer-padding: 10px 0;
@@ -16,7 +17,11 @@
     --h1-font-size-mobile: 1.5rem;
 }
 
-html, body {
+* {
+    box-sizing: border-box;
+}
+
+body {
     height: var(--height-full);
     margin: 0;
     display: flex;
@@ -138,4 +143,59 @@ h1 {
 
 .card-img-top {
     border-radius: 5%;
+}
+
+.nav {
+    max-width: 968px;
+    height: calc(var(--header-height) + 1.5rem);
+    column-gap: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+  
+body.dark {
+    background-color: var(--background-color-dark);
+    color: var(--text-color-dark);
+    background-image: url('https://raw.githubusercontent.com/MatinGhanbari/MovieHub/refs/heads/main/assets/images/background-dark.jpg');
+} 
+
+body.dark h1, body.dark .support a {color: #fff;}
+
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.checkbox-label {
+  background-color: #111;
+  width: 50px;
+  height: 26px;
+  border-radius: 50px;
+  position: relative;
+  padding: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fa-moon {color: #f1c40f;}
+
+.fa-sun {color: #f39c12;}
+
+.checkbox-label .ball {
+  background-color: #fff;
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  border-radius: 50%;
+  transition: transform 0.2s linear;
+}
+
+.checkbox:checked + .checkbox-label .ball {
+  transform: translateX(24px);
 }
