@@ -61,8 +61,11 @@
                     <div class="input-group-prepend">
                       <div class="input-group-text" style="height: 100%; width: 100%; border-radius: 6px 0 0 6px;"><i class='fa-solid fa-magnifying-glass'></i></div>
                     </div>
-                    <input type="text" class="form-control" id="title" name="title" style="border-radius: 0 6px 6px 0;" placeholder="Enter the movie name"/>
-                  </div>
+                    <input type="text" class="form-control" onfocus="document.getElementById('title').classList.remove('is-invalid');" id="title" name="title" style="border-radius: 0 6px 6px 0;" placeholder="Enter the movie name"/>
+                    <div class="invalid-feedback" style="margin-left: 45px;">
+                        Please enter a valid movie name
+                    </div>
+                </div>
                 <!-- <label for="title" style="padding-left: 10px;">Movie Name</label> -->
             </div>
 

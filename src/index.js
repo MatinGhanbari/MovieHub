@@ -121,21 +121,27 @@ async function generateQualityLinks(imdbID, season) {
 
 document.getElementById('searchForm').addEventListener('submit', function (event) {
     event.preventDefault();
-    const title = document.getElementById('title').value;
+
+    const title = document.getElementById('title');
+    title.classList.remove("is-invalid");
+
     const resultsDiv = document.getElementById('results');
 
-    if (title.trim())
-        resultsDiv.innerHTML = `<i class='fa-solid fa-magnifying-glass'></i> Searching: ${title} ...`;
+    if (title.value.trim())
+        resultsDiv.innerHTML = `<i class='fa-solid fa-magnifying-glass'></i> Searching: ${title.value} ...`;
     else 
-        resultsDiv.innerHTML = 'Please Enter the movie name!';
+        title.classList.add("is-invalid");
 });
 
 document.getElementById("searchForm")
         .addEventListener("submit", function (event) {
             event.preventDefault();
             const title = document.getElementById("title").value.trim();
-            fetchWithToken(title).then(r => {
-            });
+            
+            if (title)
+                fetchWithToken(title).then(r => {});
+            else
+                document.getElementById("title").value = title; 
         });
 
 const checkbox = document.getElementById("checkbox")
