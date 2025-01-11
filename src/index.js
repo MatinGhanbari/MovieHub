@@ -7,6 +7,9 @@ async function fetchWithToken(title) {
         const resultsContainer = document.getElementById("results");
 
         if (data.Response === "True") {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = `<i class="fa-solid fa-cloud-arrow-down"></i> Loading Download Links...`;
+
             let moviesHtml = '<div class="row">';
             for (const movie of data.Search) {
                 const poster = movie.Poster !== "N/A" ? movie.Poster : "https://raw.githubusercontent.com/MatinGhanbari/MovieHub/refs/heads/main/assets/images/default.png";
@@ -23,7 +26,7 @@ async function fetchWithToken(title) {
                                             <h4 class="card-title" style="margin-top:10px">${movie.Title}</h4>
                                             <p class="card-text">Year: ${movie.Year}</p>
                                         </div>
-                                        <div style="min-width:90%">
+                                        <div id="links-${imdbID}" style="min-width:90%">
                                             ${await generateDownloadLinks(imdbID, movie.Year, movie.Type)}
                                         </div>
                                     </div>
@@ -144,7 +147,7 @@ document.getElementById("searchForm")
                 document.getElementById("title").value = title; 
         });
 
-const checkbox = document.getElementById("checkbox")
+const checkbox = document.getElementById("checkbox");
 checkbox.addEventListener("change", () => {
-document.body.classList.toggle("dark")
-})
+    document.body.classList.toggle("dark")
+});
