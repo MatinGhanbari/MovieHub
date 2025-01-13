@@ -40,8 +40,8 @@ async function fetchWithToken(title, page=1) {
             resultsContainer.scrollIntoView({behavior: "smooth"});
 
             let pagination = `<div style="display: flex;justify-content: space-evenly;align-items: center;">`;
-            if(page > 1) pagination += `<p class="page-link" onclick="fetchWithToken('${title}', ${page-1});">Previous Page</p>`;
-            if((page + 1) * 10 < data.totalResults) pagination += `<p class="page-link" onclick="fetchWithToken('${title}', ${page+1});">Next page</p>`;            
+            if(page > 1) pagination += `<p class="page-link" onclick="fetchWithToken('${title}', ${page-1});"><i class="fa-solid fa-arrow-left"></i>&nbsp; Previous Page</p>`;
+            if((page + 1) * 10 < data.totalResults) pagination += `<p class="page-link" onclick="fetchWithToken('${title}', ${page+1});">Next page &nbsp;<i class="fa-solid fa-arrow-right"></i></p>`;            
             pagination += `</div>`;
 
             resultsContainer.innerHTML += pagination;
