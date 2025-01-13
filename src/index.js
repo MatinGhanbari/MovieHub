@@ -70,8 +70,6 @@ async function generateSeriesDownloadLinks(imdbID) {
     var movieData = await getMovieFullDetails(imdbID);
     var seasons = movieData['totalSeasons'];
 
-    console.log(seasons);
-
     for (let i = 1; i <= seasons; i++) {
         links = await generateQualityLinks(imdbID, i);
 
