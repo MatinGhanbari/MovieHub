@@ -13,14 +13,14 @@ async function fetchWithToken(title, page=1) {
             let moviesHtml = '<div class="row">';
             for (const movie of data.Search) {
                 if(movie.Type !== "movie" && movie.Type !== "series") continue;
-                const poster = movie.Poster !== "N/A" ? movie.Poster : "https://raw.githubusercontent.com/MatinGhanbari/MovieHub/refs/heads/main/assets/images/default-cover.webp";
+                const poster = movie.Poster !== "N/A" ? movie.Poster : "https://raw.githubusercontent.com/MatinGhanbari/MovieHub/refs/heads/main/assets/images-g2/default-cover.webp";
                 const imdbID = movie.imdbID.replace("tt", "");
 
                 moviesHtml += `
                             <div class="col-6 col-md-4 col-lg-2 mb-4 glass-background">
                                 <div class="glass-card">
                                     <a href="${poster}" target="_blank">
-                                        <img src="${poster}" class="card-img-top" alt="${movie.Title}" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/MatinGhanbari/MovieHub/refs/heads/main/assets/images/default-cover.webp';">
+                                        <img src="${poster}" class="card-img-top" alt="${movie.Title}" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/MatinGhanbari/MovieHub/refs/heads/main/assets/images-g2/default-cover.webp';">
                                     </a>
                                     <div class="card-body">
                                         <div style="margin-bottom: 10px">

@@ -32,7 +32,7 @@ body {
     text-align: var(--text-align-left);
     background-color: var(--background-color-light);
     color: var(--text-color-light);
-    background-image: url('https://raw.githubusercontent.com/MatinGhanbari/MovieHub/refs/heads/main/assets/images/background.webp');
+    background-image: url('https://raw.githubusercontent.com/MatinGhanbari/MovieHub/refs/heads/main/assets/images-g2/background.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -160,7 +160,7 @@ h1 {
 body.dark {
     color: var(--text-color-dark);
     background-color: var(--background-color-dark);
-    background-image: url('https://raw.githubusercontent.com/MatinGhanbari/MovieHub/refs/heads/main/assets/images/background-dark.webp');
+    background-image: url('https://raw.githubusercontent.com/MatinGhanbari/MovieHub/refs/heads/main/assets/images-g2/background-dark.webp');
 } 
 
 body.dark h1, body.dark .support a {
