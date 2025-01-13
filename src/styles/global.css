@@ -250,3 +250,8 @@ body.dark .accordion-button{
 body.dark .accordion-item{
     border: transparent
 }
+
+.page-link{
+    color: blue;
+    cursor: pointer;
+}
