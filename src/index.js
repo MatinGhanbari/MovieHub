@@ -13,14 +13,14 @@ async function fetchWithToken(title, page=1) {
             let moviesHtml = '<div class="row">';
             for (const movie of data.Search) {
                 if(movie.Type !== "movie" && movie.Type !== "series") continue;
-                const poster = movie.Poster !== "N/A" ? movie.Poster : "https://raw.githubusercontent.com/MatinGhanbari/MovieHub/refs/heads/main/assets/images/default-cover.jpg";
+                const poster = movie.Poster !== "N/A" ? movie.Poster : "https://raw.githubusercontent.com/MatinGhanbari/MovieHub/refs/heads/main/assets/images/default-cover.webp";
                 const imdbID = movie.imdbID.replace("tt", "");
 
                 moviesHtml += `
                             <div class="col-6 col-md-4 col-lg-2 mb-4 glass-background">
                                 <div class="glass-card">
                                     <a href="${poster}" target="_blank">
-                                        <img src="${poster}" class="card-img-top" alt="${movie.Title}" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/MatinGhanbari/MovieHub/refs/heads/main/assets/images/default-cover.jpg';">
+                                        <img src="${poster}" class="card-img-top" alt="${movie.Title}" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/MatinGhanbari/MovieHub/refs/heads/main/assets/images/default-cover.webp';">
                                     </a>
                                     <div class="card-body">
                                         <div style="margin-bottom: 10px">
@@ -47,7 +47,7 @@ async function fetchWithToken(title, page=1) {
             resultsContainer.innerHTML += pagination;
             resultsContainer.innerHTML += `<div style="display: flex;justify-content: space-evenly;align-items: center;"><strong>Page ${page} - ${(data.totalResults/10).toFixed()}</strong></div>`;
         } else {
-            resultsContainer.innerHTML = '<div class="alert alert-danger">Movie not found!</div>';
+            resultsContainer.innerHTML = '<div class="alert alert-danger"><i class="fa-solid fa-film"></i> Movie not found!</div>';
         }
     } catch (error) {
         console.error("Error: ", error);

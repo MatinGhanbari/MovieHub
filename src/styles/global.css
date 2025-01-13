@@ -32,7 +32,7 @@ body {
     text-align: var(--text-align-left);
     background-color: var(--background-color-light);
     color: var(--text-color-light);
-    background-image: url('https://raw.githubusercontent.com/MatinGhanbari/MovieHub/refs/heads/main/assets/images/background.jpg');
+    background-image: url('https://raw.githubusercontent.com/MatinGhanbari/MovieHub/refs/heads/main/assets/images/background.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -127,10 +127,12 @@ footer {
     align-items: center;
     justify-content: center;
     height: 5em;
+    width: 5em;
 }
 
 .logo {
-    /* Add logo styles here if needed */
+    height: 5em;
+    width: 5em;
 }
 
 .logo-container img {
@@ -158,7 +160,7 @@ h1 {
 body.dark {
     color: var(--text-color-dark);
     background-color: var(--background-color-dark);
-    background-image: url('https://raw.githubusercontent.com/MatinGhanbari/MovieHub/refs/heads/main/assets/images/background-dark.jpg');
+    background-image: url('https://raw.githubusercontent.com/MatinGhanbari/MovieHub/refs/heads/main/assets/images/background-dark.webp');
 } 
 
 body.dark h1, body.dark .support a {
@@ -208,7 +210,9 @@ body.dark a{
 }
 
 body.dark .alert-info{
-    color: #000000;
+    color: #343434;
+    border-width: 0;
+    border-color: transparent;
 }
 
 body.dark .alert-info a{
@@ -217,6 +221,8 @@ body.dark .alert-info a{
 
 body.dark .alert-light{
     color: #000000;
+    border-width: 0;
+    border-color: transparent;
 }
 
 body.dark .alert-light a{
