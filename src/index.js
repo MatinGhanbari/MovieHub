@@ -12,14 +12,14 @@ async function fetchWithToken(title) {
 
             let moviesHtml = '<div class="row">';
             for (const movie of data.Search) {
-                const poster = movie.Poster !== "N/A" ? movie.Poster : "https://raw.githubusercontent.com/MatinGhanbari/MovieHub/refs/heads/main/assets/images/default.png";
+                const poster = movie.Poster !== "N/A" ? movie.Poster : "https://raw.githubusercontent.com/MatinGhanbari/MovieHub/refs/heads/main/assets/images/default-cover.jpg";
                 const imdbID = movie.imdbID.replace("tt", "");
 
                 moviesHtml += `
                             <div class="col-6 col-md-4 col-lg-2 mb-4 glass-background">
                                 <div class="glass-card">
                                     <a href="${poster}" target="_blank">
-                                        <img src="${poster}" class="card-img-top" alt="${movie.Title}" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/MatinGhanbari/MovieHub/refs/heads/main/assets/images/default.png';">
+                                        <img src="${poster}" class="card-img-top" alt="${movie.Title}" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/MatinGhanbari/MovieHub/refs/heads/main/assets/images/default-cover.jpg';">
                                     </a>
                                     <div class="card-body">
                                         <div style="margin-bottom: 10px">
