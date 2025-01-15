@@ -22,7 +22,7 @@ Light Mode | Dark Mode
 We welcome contributions from the community! If you'd like to help improve MovieHub, please follow these steps:
 1. **Fork the repository**: Click the "Fork" button at the top right of the page to create your own copy of the project.
 2. **Create a new branch**: Use a descriptive name for your branch, such as `feature/add-search-bar` or `bugfix/fix-typo`.
-   ```bash
+   ```bash 
    git checkout -b your-branch-name
    ```
 3. **Make your changes**: Implement your feature or fix the bug.
