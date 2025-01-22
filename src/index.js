@@ -28,7 +28,7 @@ async function fetchWithToken(title, page=1) {
                                             <p class="card-text">Year: ${movie.Year}</p>
                                         </div>
                                         <div id="links-${imdbID}" style="min-width:90%">
-                                            ${await generateDownloadLinks(imdbID, movie.Year, movie.Type)}
+                                            ${await generateDownloadLinks(imdbID, movie.Year, movie.Type, movie.Title)}
                                         </div>
                                     </div>
                                 </div>
@@ -56,15 +56,17 @@ async function fetchWithToken(title, page=1) {
 }
 
 
-async function generateDownloadLinks(imdbID, year, type) {
+async function generateDownloadLinks(imdbID, year, type, title="") {
     try{
+        title = title.trim().replace(' ', '-').toLowerCase();
+
         if (type === "movie") {
             const originalDownloadLink = `https://tokyo.saymyname.website/Movies/${year}/${imdbID}/`;
-            const backupDownloadLink = `https://berlin.saymyname.website/Movies/${year}/${imdbID}/`;
+            const backupDownloadLink = `https://dl.subtitlestar.com/dlsub/${title}-${year}-All.zip`;
     
             let linksHtml = '';
             linksHtml += `<a href="${originalDownloadLink}" target="_blank" class="btn btn-primary mb-2">Download</a><br>`;
-            linksHtml += `<a href="${backupDownloadLink}" target="_blank" class="btn btn-secondary mb-2">Backup Link</a><br>`;
+            linksHtml += `<a href="${backupDownloadLink}" target="_blank" class="btn btn-secondary mb-2">Subtitle Link</a><br>`;
     
             return linksHtml;
         } else if (type === "series") {
