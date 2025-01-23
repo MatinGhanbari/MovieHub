@@ -58,7 +58,7 @@ async function fetchWithToken(title, page=1) {
 
 async function generateDownloadLinks(imdbID, year, type, title="") {
     try{
-        title = title.trim().replace(/\s+/g, '-').toLowerCase();
+        title = title.trim().replace(/\s+/g, '-').replace(':', '').toLowerCase();
 
         if (type === "movie") {
             const originalDownloadLink = `https://tokyo.saymyname.website/Movies/${year}/${imdbID}/`;
