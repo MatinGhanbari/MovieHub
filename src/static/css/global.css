@@ -57,7 +57,7 @@ html {
 }
 
 body {
-    background: url(../images/body-background.png);
+    background: url(../images/background/body.png);
     -webkit-background-size: cover;
     background-size: cover;
 }
@@ -8647,6 +8647,10 @@ a.link:hover, .link:hover, a.link:focus, .link:focus {
     color: #344767;
 }
 
+.css-unz5y7:hover {
+    cursor: pointer;
+}
+
 .css-1vg6q84 {
     font-weight: 700;
 }
@@ -10374,7 +10378,7 @@ label[data-shrink=false] + .MuiInputBase-formControl .css-10ukfau-MuiInputBase-i
     height: 340px;
     padding-top: 32px;
     padding-bottom: 32px;
-    background-image: url(../images/cardimgfree.png);
+    background-image: url(../images/content/cardimgfree.png);
     -webkit-background-size: cover;
     background-size: cover;
     -webkit-background-position: 50%;
@@ -10411,7 +10415,7 @@ label[data-shrink=false] + .MuiInputBase-formControl .css-10ukfau-MuiInputBase-i
     height: 340px;
     padding-top: 32px;
     padding-bottom: 32px;
-    background-image: url(../images/cardimgfree.png);
+    background-image: url(../images/content/cardimgfree.png);
     -webkit-background-size: cover;
     background-size: cover;
     -webkit-background-position: 50%;
@@ -16479,5 +16483,9 @@ span.disable-links {
 
 .alert-danger {
     color: #d45f76;
+}
+
+#hiddenfield{
+    display: none;
 }
 

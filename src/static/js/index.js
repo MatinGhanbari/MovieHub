@@ -5,11 +5,25 @@ const results_container = document.getElementById('results_container');
 const loader_spinner = document.getElementById('loader_spinner');
 const search_results_section = document.getElementById('search_results_section');
 const menu = document.getElementById('menu');
+const search_icon = document.getElementById('search_icon');
 const close_menu = document.getElementById('close_menu');
+const hiddenfield = document.getElementById('hiddenfield');
 
 close_menu.addEventListener('click', ev => {
     console.log("test");
     menu.style.display = "none !important;"
+});
+
+search_icon.addEventListener('click', () => {
+    hiddenfield.focus();
+    console.log("dsl");
+    let title = search_bar.value.trim();
+
+    if (title) {
+        SearchMoviesByTitle(title);
+    } else {
+        search_bar.value = title;
+    }
 });
 
 bsearch_button.addEventListener('click', () => {
@@ -57,7 +71,7 @@ async function SearchMoviesByTitle(title, page = 1) {
             `;
             for (const movie of data.Search) {
                 if (movie.Type !== "movie") continue; //Just Movies
-                const poster = movie.Poster !== "N/A" ? movie.Poster : "../static/images/default-cover.jpg";
+                const poster = movie.Poster !== "N/A" ? movie.Poster : "./static/images/cover/default.jpg";
                 const imdbID = movie.imdbID.replace("tt", "");
                 moviesHtml += `
     <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-lg-6 MuiGrid-grid-xl-5 css-1ycjkpa-MuiGrid-root">
