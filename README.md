@@ -1,17 +1,16 @@
 # 🎬 MovieHub
 Movies for free of all genres!
 
-# 📸 Screenshots
-Light Mode | Dark Mode
---- | ---
-![image](https://github.com/user-attachments/assets/4d3fb56c-f8ee-4b94-b8f2-a7829ee8e842) | ![image](https://github.com/user-attachments/assets/ec1e42bf-bc98-40b6-b2b9-907243850ec2)
+## ✨ Features
+- Easy search and download movies
 
-## ✨ Features 
-- [x] Extensive library of movies across various genres
-- [x] User-friendly interface with light and dark mode options
-- [x] Search functionality to easily find your favorite films
-- [x] Easy Download movies
-- [ ] Watchlist feature to save movies for later viewing
+# 📸 Screenshots
+Page | Image
+--- | ---
+Home Page | ![image](assets/images/screenshots/home.png)
+Seach | ![image](assets/images/screenshots/search-home.png)
+
+
 
 ## 🎥 Usage 
 - Browse through the movie library by genre or search for specific titles.
