@@ -7,7 +7,22 @@ const search_results_section = document.getElementById('search_results_section')
 const menu = document.getElementById('menu');
 const search_icon = document.getElementById('search_icon');
 const close_menu = document.getElementById('close_menu');
+const clear_search = document.getElementById('clear_search');
 const hiddenfield = document.getElementById('hiddenfield');
+
+clear_search.addEventListener('click', ev => {
+    ev.preventDefault();
+    search_bar.value = '';
+    clear_search.style.display = 'none';
+});
+
+search_bar.addEventListener('input', ev => {
+    if (search_bar.value.length > 0) {
+        clear_search.style.display = 'block';
+    } else {
+        clear_search.style.display = 'none';
+    }
+});
 
 close_menu.addEventListener('click', ev => {
     console.log("test");
@@ -38,6 +53,7 @@ search_bar.addEventListener('keydown', ev => {
         let title = search_bar.value.trim();
 
         if (title) {
+            hiddenfield.focus();
             SearchMoviesByTitle(title);
         } else {
             search_bar.value = title;
@@ -71,8 +87,15 @@ async function SearchMoviesByTitle(title, page = 1) {
             `;
             for (const movie of data.Search) {
                 if (movie.Type !== "movie") continue; //Just Movies
-                const poster = movie.Poster !== "N/A" ? movie.Poster : "./static/images/cover/default.jpg";
+                const poster = movie.Poster !== "N/A" ? movie.Poster : "./static/images/cover/404-poster-not-found.jpg.jpg";
                 const imdbID = movie.imdbID.replace("tt", "");
+
+                var fullTitle = "";
+                if (movie.Title.length >= 30) {
+                    var fullTitle = `<span class="tooltip">${movie.Title}</span>`;
+                    movie.Title = movie.Title.slice(0, 26) + "...";
+                }
+
                 moviesHtml += `
     <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-lg-6 MuiGrid-grid-xl-5 css-1ycjkpa-MuiGrid-root">
         <div class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-a1zovi-MuiPaper-root-MuiCard-root">
@@ -88,8 +111,9 @@ async function SearchMoviesByTitle(title, page = 1) {
                     </div>
                 </div>
                 <div style="display: flex;justify-content: space-between;align-content: center;align-items: flex-start">
-                    <div style="padding-right: 20px !important;">
+                    <div style="padding-right: 20px !important;" class="tooltip-container">
                         <span class="MuiTypography-root MuiTypography-lg css-a3jw3h-MuiTypography-root">${movie.Title}</span>
+                        ${fullTitle}
                         <div class="MuiBox-root css-14l70i8"><span
                                 class="MuiTypography-root MuiTypography-button css-1t3vklz-MuiTypography-root">${movie.Year} <span
                                 class="MuiTypography-root MuiTypography-button css-dsc10y-MuiTypography-root"></span></span>
