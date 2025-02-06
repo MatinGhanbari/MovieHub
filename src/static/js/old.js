@@ -41,7 +41,7 @@ async function fetchWithToken(title, page=1) {
 
             let pagination = `<div style="display: flex;justify-content: space-evenly;align-items: center;">`;
             if(page > 1) pagination += `<p class="page-link" onclick="fetchWithToken('${title}', ${page-1});"><i class="fa-solid fa-arrow-left"></i>&nbsp; Previous Page</p>`;
-            if((page + 1) * 10 < data.totalResults) pagination += `<p class="page-link" onclick="fetchWithToken('${title}', ${page+1});">Next page &nbsp;<i class="fa-solid fa-arrow-right"></i></p>`;            
+            if((page + 1) * 10 < data.totalResults) pagination += `<p class="page-link" onclick="fetchWithToken('${title}', ${page+1});">Next page &nbsp;<i class="fa-solid fa-arrow-right"></i></p>`;
             pagination += `</div>`;
 
             resultsContainer.innerHTML += pagination;
@@ -63,11 +63,11 @@ async function generateDownloadLinks(imdbID, year, type, title="") {
         if (type === "movie") {
             const originalDownloadLink = `https://tokyo.saymyname.website/Movies/${year}/${imdbID}/`;
             const backupDownloadLink = `https://dl.subtitlestar.com/dlsub/${title}-${year}-All.zip`;
-    
+
             let linksHtml = '';
             linksHtml += `<a href="${originalDownloadLink}" target="_blank" class="btn btn-primary mb-2">Download</a><br>`;
             linksHtml += `<a href="${backupDownloadLink}" target="_blank" class="btn btn-secondary mb-2">Subtitle Link</a><br>`;
-    
+
             return linksHtml;
         } else if (type === "series") {
             return generateSeriesDownloadLinks(imdbID);
@@ -81,7 +81,7 @@ async function generateDownloadLinks(imdbID, year, type, title="") {
 
 async function generateSeriesDownloadLinks(imdbID) {
     let seasonsHtml = '<div class="accordion" id="seasonsAccordion">';
-    
+
     var movieData = await getMovieFullDetails(imdbID);
     var seasons = movieData['totalSeasons'];
 
@@ -113,7 +113,7 @@ async function generateSeriesDownloadLinks(imdbID) {
 }
 
 async function getMovieFullDetails(imdbID) {
-    
+
     try {
         let url = `https://www.omdbapi.com/?apikey=abb7cdf7&i=tt${imdbID}&plot=full`;
 
@@ -127,12 +127,12 @@ async function getMovieFullDetails(imdbID) {
 }
 
 async function generateQualityLinks(imdbID, season) {
-  let qualityLinks = "";
-  for (let quality = 1; quality <= 4; quality++) {
-    const downloadLink = `https://subtitle.saymyname.website/DL/filmgir/?i=tt${imdbID}&f=${season}&q=${quality}`;
-    qualityLinks += `<a href="${downloadLink}" target="_blank" class="btn btn-primary mb-2">S${season} - Quality ${quality}</a><br>`;
-  }
-  return qualityLinks;
+    let qualityLinks = "";
+    for (let quality = 1; quality <= 4; quality++) {
+        const downloadLink = `https://subtitle.saymyname.website/DL/filmgir/?i=tt${imdbID}&f=${season}&q=${quality}`;
+        qualityLinks += `<a href="${downloadLink}" target="_blank" class="btn btn-primary mb-2">S${season} - Quality ${quality}</a><br>`;
+    }
+    return qualityLinks;
 }
 
 document.getElementById('searchForm').addEventListener('submit', function (event) {
@@ -145,20 +145,20 @@ document.getElementById('searchForm').addEventListener('submit', function (event
 
     if (title.value.trim())
         resultsDiv.innerHTML = `<i class='fa-solid fa-magnifying-glass'></i> Searching: ${title.value} ...`;
-    else 
+    else
         title.classList.add("is-invalid");
 });
 
 document.getElementById("searchForm")
-        .addEventListener("submit", function (event) {
-            event.preventDefault();
-            const title = document.getElementById("title").value.trim();
-            
-            if (title)
-                fetchWithToken(title).then(r => {});
-            else
-                document.getElementById("title").value = title; 
-        });
+    .addEventListener("submit", function (event) {
+        event.preventDefault();
+        const title = document.getElementById("title").value.trim();
+
+        if (title)
+            fetchWithToken(title).then(r => {});
+        else
+            document.getElementById("title").value = title;
+    });
 
 const checkbox = document.getElementById("checkbox");
 checkbox.addEventListener("change", () => {

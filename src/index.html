@@ -1,102 +1,433 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="description" content="Movies for free of all genres! Stream and download movies for free with our powerful movie app! Search through thousands of titles and enjoy your cinematic experience without limits.">
     <title>MovieHub</title>
-    <script>
-        (function (w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
-            var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
-            j.async = true;
-            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-            f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-KVN66WC6');
-    </script>
-    <link href="favicon.ico" rel="icon" type="image/x-icon"> <!-- Link to favicon -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"rel="stylesheet">
-    <link href="./styles/global.css" rel="stylesheet"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#17c1e8">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="shortcut icon" href="favicon.png">
+    <link rel="stylesheet" href="static/css/global.css">
 </head>
-<body>
-<noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KVN66WC6" height="0" width="0" style="display:none;visibility:hidden"></iframe>
-</noscript>
-
-<div class="app">
-    <header>
-        <nav class="nav container">
-        <div class="logo-container text-center">
-            <img src="https://raw.githubusercontent.com/MatinGhanbari/MovieHub/refs/heads/main/assets/images-g2/logo-transparent.webp" alt="logo" class="img-fluid logo"/>
-        </div>
-        <div>
-            <input type="checkbox" class="checkbox" id="checkbox">
-            <label for="checkbox" class="checkbox-label">
-              <i class="fas fa-moon"></i>
-              <i class="fas fa-sun"></i>
-              <span class="ball"></span>
-            </label>
-          </div>
-    </nav>
-    </header>
-
-    <div class="container mt-5">
-        <div style="display: flex;justify-content: space-evenly;align-items: center;">
-            <div><i class="fa-solid fa-fire"></i>&nbsp;&nbsp;<a href="./pages/recent-movies/" target="_blank" class="alert-link">Recent Movies</a></div>
-            <div><i class="fa-solid fa-star"></i>&nbsp;&nbsp;<a href="./pages/top-movies/" target="_blank" class="alert-link">Top Movies</a></div>
-        </div><br>
-
-        <form id="searchForm" class="row g-3">
-            <div class="col-12">
-                <div class="input-group mb-2 mr-sm-2">
-                    <div class="input-group-prepend">
-                      <div class="input-group-text" style="height: 100%; width: 100%; border-radius: 6px 0 0 6px;"><i class='fa-solid fa-magnifying-glass'></i></div>
+<body dir="ltr">
+<noscript>You need to enable JavaScript to run this app.</noscript>
+<div id="root">
+    <div class="MuiDrawer-root MuiDrawer-docked css-v1a15b-MuiDrawer-docked" brand="">
+        <div id="menu"
+             class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiDrawer-paper MuiDrawer-paperAnchorLeft MuiDrawer-paperAnchorDockedLeft css-1cjsu7f-MuiPaper-root-MuiDrawer-paper">
+            <div class="MuiBox-root css-4f8p8g">
+                <div class="MuiBox-root css-19gltr3"><h6
+                        class="MuiTypography-root MuiTypography-h6 css-9n76g7-MuiTypography-root"><span
+                        class="material-icons-round notranslate MuiIcon-root MuiIcon-fontSizeInherit css-fnit94-MuiIcon-root"
+                        id="close_menu"
+                        aria-hidden="true">close</span></h6></div>
+                <a aria-current="page" class="MuiBox-root css-1xs62qu active" href="./">
+                    <div class="MuiBox-root css-85q262">
+                        <div class="MuiBox-root css-6mfk3q">
+                            <img src="static/images/logo.jpg" alt="img" width="24px" height="24px">
+                        </div>
+                        <span class="MuiTypography-root MuiTypography-button css-1nn17v2-MuiTypography-root">MovieHub Web</span>
                     </div>
-                    <input type="text" class="form-control" onfocus="document.getElementById('title').classList.remove('is-invalid');" id="title" name="title" style="border-radius: 0 6px 6px 0;" placeholder="Enter the movie name"/>
-                    <div class="invalid-feedback" style="margin-left: 45px;">
-                        Please enter a valid movie name
+                </a></div>
+            <hr class="MuiDivider-root MuiDivider-fullWidth MuiDivider-light css-98ka3e-MuiDivider-root">
+            <ul class="MuiList-root MuiList-padding css-n4phvm-MuiList-root"><a href="./" aria-current="page"
+                                                                                class="active">
+                <li class="MuiListItem-root MuiListItem-padding css-16qr4iu-MuiListItem-root">
+                    <div class="MuiBox-root css-wac2lw">
+                        <div class="MuiListItemIcon-root css-l6s1k5-MuiListItemIcon-root">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512"
+                                 color="inherit" height="15px" width="15px" xmlns="http://www.w3.org/2000/svg"
+                                 style="color: inherit;">
+                                <path d="M261.56 101.28a8 8 0 00-11.06 0L66.4 277.15a8 8 0 00-2.47 5.79L63.9 448a32 32 0 0032 32H192a16 16 0 0016-16V328a8 8 0 018-8h80a8 8 0 018 8v136a16 16 0 0016 16h96.06a32 32 0 0032-32V282.94a8 8 0 00-2.47-5.79z"></path>
+                                <path d="M490.91 244.15l-74.8-71.56V64a16 16 0 00-16-16h-48a16 16 0 00-16 16v32l-57.92-55.38C272.77 35.14 264.71 32 256 32c-8.68 0-16.72 3.14-22.14 8.63l-212.7 203.5c-6.22 6-7 15.87-1.34 22.37A16 16 0 0043 267.56L250.5 69.28a8 8 0 0111.06 0l207.52 198.28a16 16 0 0022.59-.44c6.14-6.36 5.63-16.86-.76-22.97z"></path>
+                            </svg>
+                        </div>
+                        <div class="MuiListItemText-root css-1p50vkk-MuiListItemText-root"><span
+                                class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-12x4ih-MuiTypography-root">Home</span>
+                        </div>
+                    </div>
+                </li>
+            </a>
+                <span
+                        class="MuiTypography-root MuiTypography-caption css-1sum7xs-MuiTypography-root">coming soon...</span>
+                <span class="disable-links"><a href="#"><a href="/tables">
+                <li class="MuiListItem-root MuiListItem-padding css-16qr4iu-MuiListItem-root">
+                    <div class="MuiBox-root css-fjnvac">
+                        <div class="MuiListItemIcon-root css-b57zcx-MuiListItemIcon-root">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512"
+                                 color="inherit" height="15px" width="15px" xmlns="http://www.w3.org/2000/svg"
+                                 style="color: inherit;">
+                                <path d="M104 496H72a24 24 0 01-24-24V328a24 24 0 0124-24h32a24 24 0 0124 24v144a24 24 0 01-24 24zm224 0h-32a24 24 0 01-24-24V232a24 24 0 0124-24h32a24 24 0 0124 24v240a24 24 0 01-24 24zm112 0h-32a24 24 0 01-24-24V120a24 24 0 0124-24h32a24 24 0 0124 24v352a24 24 0 01-24 24zm-224 0h-32a24 24 0 01-24-24V40a24 24 0 0124-24h32a24 24 0 0124 24v432a24 24 0 01-24 24z"></path>
+                            </svg>
+                        </div>
+                        <div class="MuiListItemText-root css-1fh784t-MuiListItemText-root"><span
+                                class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-12x4ih-MuiTypography-root disable-links-color">Tables</span>
+                        </div>
+                    </div>
+                </li>
+            </a></span>
+                <span class="disable-links"><a
+                        href="/profile">
+                    <li class="MuiListItem-root MuiListItem-padding css-16qr4iu-MuiListItem-root">
+                        <div class="MuiBox-root css-fjnvac">
+                            <div class="MuiListItemIcon-root css-b57zcx-MuiListItemIcon-root">
+                                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16"
+                                     color="inherit" height="15px" width="15px" xmlns="http://www.w3.org/2000/svg"
+                                     style="color: inherit;">
+                                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"></path>
+                                </svg>
+                            </div>
+                            <div class="MuiListItemText-root css-1fh784t-MuiListItemText-root"><span
+                                    class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-12x4ih-MuiTypography-root disable-links-color">Profile</span>
+                            </div>
+                        </div>
+                    </li>
+                </a></span>
+                <span class="disable-links"> <a href="/authentication/sign-in">
+                <li class="MuiListItem-root MuiListItem-padding css-16qr4iu-MuiListItem-root">
+                    <div class="MuiBox-root css-fjnvac">
+                        <div class="MuiListItemIcon-root css-b57zcx-MuiListItemIcon-root">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512"
+                                 color="inherit" height="15px" width="15px" xmlns="http://www.w3.org/2000/svg"
+                                 style="color: inherit;">
+                                <path d="M312 155h91c2.8 0 5-2.2 5-5 0-8.9-3.9-17.3-10.7-22.9L321 63.5c-5.8-4.8-13-7.4-20.6-7.4-4.1 0-7.4 3.3-7.4 7.4V136c0 10.5 8.5 19 19 19z"></path>
+                                <path d="M267 136V56H136c-17.6 0-32 14.4-32 32v336c0 17.6 14.4 32 32 32h240c17.6 0 32-14.4 32-32V181h-96c-24.8 0-45-20.2-45-45z"></path>
+                            </svg>
+                        </div>
+                        <div class="MuiListItemText-root css-1fh784t-MuiListItemText-root"><span
+                                class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-12x4ih-MuiTypography-root disable-links-color">Sign In</span>
+                        </div>
+                    </div>
+                </li>
+            </a></span>
+
+                <span class="disable-links"> <a href="/authentication/sign-up">
+                <li class="MuiListItem-root MuiListItem-padding css-16qr4iu-MuiListItem-root">
+                    <div class="MuiBox-root css-fjnvac">
+                        <div class="MuiListItemIcon-root css-b57zcx-MuiListItemIcon-root">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512"
+                                 color="inherit" height="15px" width="15px" xmlns="http://www.w3.org/2000/svg"
+                                 style="color: inherit;">
+                                <path d="M477.64 38.26a4.75 4.75 0 00-3.55-3.66c-58.57-14.32-193.9 36.71-267.22 110a317 317 0 00-35.63 42.1c-22.61-2-45.22-.33-64.49 8.07C52.38 218.7 36.55 281.14 32.14 308a9.64 9.64 0 0010.55 11.2l87.31-9.63a194.1 194.1 0 001.19 19.7 19.53 19.53 0 005.7 12L170.7 375a19.59 19.59 0 0012 5.7 193.53 193.53 0 0019.59 1.19l-9.58 87.2a9.65 9.65 0 0011.2 10.55c26.81-4.3 89.36-20.13 113.15-74.5 8.4-19.27 10.12-41.77 8.18-64.27a317.66 317.66 0 0042.21-35.64C441 232.05 491.74 99.74 477.64 38.26zM294.07 217.93a48 48 0 1167.86 0 47.95 47.95 0 01-67.86 0z"></path>
+                                <path d="M168.4 399.43c-5.48 5.49-14.27 7.63-24.85 9.46-23.77 4.05-44.76-16.49-40.49-40.52 1.63-9.11 6.45-21.88 9.45-24.88a4.37 4.37 0 00-3.65-7.45 60 60 0 00-35.13 17.12C50.22 376.69 48 464 48 464s87.36-2.22 110.87-25.75A59.69 59.69 0 00176 403.09c.37-4.18-4.72-6.67-7.6-3.66z"></path>
+                            </svg>
+                        </div>
+                        <div class="MuiListItemText-root css-1fh784t-MuiListItemText-root"><span
+                                class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-12x4ih-MuiTypography-root disable-links-color">Sign Up</span>
+                        </div>
+                    </div>
+                </li>
+            </a></span>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="MuiDrawer-root MuiDrawer-docked css-1g30n6l-MuiDrawer-docked">
+    <div class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiDrawer-paper MuiDrawer-paperAnchorLeft MuiDrawer-paperAnchorDockedLeft css-1cjsu7f-MuiPaper-root-MuiDrawer-paper">
+        <div class="MuiBox-root css-1jrnrhu">
+            <div class="MuiBox-root css-7wmvu8"><h5
+                    class="MuiTypography-root MuiTypography-h5 css-1mq0h6a-MuiTypography-root">MovieHub
+                Configurator</h5>
+                <p class="MuiTypography-root MuiTypography-body2 css-w8otsu-MuiTypography-root">See our dashboard
+                    options.</p></div>
+            <span class="material-icons-round notranslate MuiIcon-root MuiIcon-fontSizeInherit css-vxvpc0-MuiIcon-root"
+                  aria-hidden="true">close</span></div>
+        <hr class="MuiDivider-root MuiDivider-fullWidth MuiDivider-light css-98ka3e-MuiDivider-root">
+        <div class="MuiBox-root css-1hm45fs">
+            <div class="MuiBox-root css-7wmvu8"><h6
+                    class="MuiTypography-root MuiTypography-h6 css-1d0u0pv-MuiTypography-root">Sidenav Colors</h6>
+                <div class="MuiBox-root css-1l5a2rg">
+                    <button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1tkdp2p-MuiButtonBase-root-MuiIconButton-root"
+                            tabindex="0" type="button"></button>
+                    <button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-12rixuw-MuiButtonBase-root-MuiIconButton-root"
+                            tabindex="0" type="button"></button>
+                    <button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1xbxexb-MuiButtonBase-root-MuiIconButton-root"
+                            tabindex="0" type="button"></button>
+                    <button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-lf9o39-MuiButtonBase-root-MuiIconButton-root"
+                            tabindex="0" type="button"></button>
+                    <button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-dwke7n-MuiButtonBase-root-MuiIconButton-root"
+                            tabindex="0" type="button"></button>
+                </div>
+            </div>
+            <div class="MuiBox-root css-fkojd3"><h6
+                    class="MuiTypography-root MuiTypography-h6 css-1d0u0pv-MuiTypography-root">Sidenav Type</h6>
+                <span class="MuiTypography-root MuiTypography-button css-dsc10y-MuiTypography-root">Choose between 2 different sidenav types.</span>
+                <div class="MuiBox-root css-1uifc60">
+                    <button class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedWhite MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorWhite MuiButton-fullWidth MuiButton-root MuiButton-contained MuiButton-containedWhite MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorWhite MuiButton-fullWidth css-vy49fx-MuiButtonBase-root-MuiButton-root"
+                            tabindex="0" type="button">Transparent
+                    </button>
+                    <button class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedWhite MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorWhite MuiButton-fullWidth MuiButton-root MuiButton-outlined MuiButton-outlinedWhite MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorWhite MuiButton-fullWidth css-1wqf2og-MuiButtonBase-root-MuiButton-root"
+                            tabindex="0" type="button">Opaque
+                    </button>
+                </div>
+            </div>
+            <div class="MuiBox-root css-fghupg"><h6
+                    class="MuiTypography-root MuiTypography-h6 css-1d0u0pv-MuiTypography-root">Navbar Fixed</h6>
+                <span class="MuiSwitch-root MuiSwitch-sizeMedium css-1ly9ujs-MuiSwitch-root"><span
+                        class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorWhite Mui-checked PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorWhite Mui-checked Mui-checked css-ub7xnn-MuiButtonBase-root-MuiSwitch-switchBase"><input
+                        class="PrivateSwitchBase-input MuiSwitch-input css-1m9pwf3" type="checkbox" checked=""><span
+                        class="MuiSwitch-thumb css-2g1ugs-MuiSwitch-thumb"></span></span><span
+                        class="MuiSwitch-track css-5jxvbd-MuiSwitch-track"></span></span></div>
+            <hr class="MuiDivider-root MuiDivider-fullWidth MuiDivider-light css-98ka3e-MuiDivider-root">
+            <div class="MuiBox-root css-y2t3d9">
+                <div class="MuiBox-root css-vz2i8e"><a
+                        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedWhite MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorWhite MuiButton-fullWidth MuiButton-root MuiButton-contained MuiButton-containedWhite MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorWhite MuiButton-fullWidth css-1ra0ko5-MuiTypography-root-MuiLink-root-MuiButtonBase-root-MuiButton-root"
+                        tabindex="0" href="https://www.creative-tim.com/product/vision-ui-dashboard-react"
+                        target="_blank" rel="noreferrer">FREE DOWNLOAD</a></div>
+                <a class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedWhite MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorWhite MuiButton-fullWidth MuiButton-root MuiButton-outlined MuiButton-outlinedWhite MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorWhite MuiButton-fullWidth css-12gslhy-MuiTypography-root-MuiLink-root-MuiButtonBase-root-MuiButton-root"
+                   tabindex="0"
+                   href="https://www.creative-tim.com/learning-lab/react/quick-start/vision-ui-dashboard/"
+                   target="_blank" rel="noreferrer">VIEW DOCUMENTATION</a></div>
+            <div class="MuiBox-root css-1wy2k9c"><span><span></span></span></div>
+            <div class="MuiBox-root css-1xyaojc">
+                <div class="MuiBox-root css-1l5a2rg"><h6
+                        class="MuiTypography-root MuiTypography-h6 css-1d0u0pv-MuiTypography-root">Thank you for
+                    sharing!</h6></div>
+                <div class="MuiBox-root css-1wy2k9c">
+                    <div class="MuiBox-root css-1vewvhm"><a
+                            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedWhite MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorWhite MuiButton-root MuiButton-contained MuiButton-containedWhite MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorWhite css-f9si03-MuiTypography-root-MuiLink-root-MuiButtonBase-root-MuiButton-root"
+                            tabindex="0"
+                            href="https://twitter.com/intent/tweet?url=https://www.creative-tim.com/product/vision-ui-dashboard-react&amp;text=Check%20Vision%20UI%20Dashboard%20made%20by%20@simmmple_web%20and%20@CreativeTim%20#webdesign%20#dashboard%20#react"
+                            target="_blank" rel="noreferrer">
+                        <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-eimhud-MuiSvgIcon-root"
+                             focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="TwitterIcon">
+                            <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"></path>
+                        </svg>&nbsp; Tweet</a></div>
+                    <a class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedWhite MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorWhite MuiButton-root MuiButton-contained MuiButton-containedWhite MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorWhite css-f9si03-MuiTypography-root-MuiLink-root-MuiButtonBase-root-MuiButton-root"
+                       tabindex="0"
+                       href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/vision-ui-dashboard-react"
+                       target="_blank" rel="noreferrer">
+                        <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-eimhud-MuiSvgIcon-root"
+                             focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="FacebookIcon">
+                            <path d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2m13 2h-2.5A3.5 3.5 0 0 0 12 8.5V11h-2v3h2v7h3v-7h3v-3h-3V9a1 1 0 0 1 1-1h2V5z"></path>
+                        </svg>&nbsp; Share</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="MuiBox-root css-1std5id" id="bsearch_button"><span
+        class="material-icons-round notranslate MuiIcon-root MuiIcon-fontSizeDefault css-75zff6-MuiIcon-root"
+        aria-hidden="true">search</span></div>
+<div class="MuiBox-root css-1xjsnnk">
+    <header class="header-css MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorInherit MuiAppBar-positionSticky css-18hgx4e-MuiPaper-root-MuiAppBar-root">
+        <div class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-otgfn9-MuiToolbar-root">
+            <div class="MuiBox-root css-3teb1g">
+                <div class="MuiBox-root css-tdfc30">
+                    <nav class="MuiTypography-root MuiTypography-body1 MuiBreadcrumbs-root css-2wqnkl-MuiTypography-root-MuiBreadcrumbs-root">
+                        <ol class="MuiBreadcrumbs-ol css-4pdmu4-MuiBreadcrumbs-ol">
+                            <li class="MuiBreadcrumbs-li"><a href="./"><span
+                                    class="MuiTypography-root MuiTypography-body2 css-a8mtlp-MuiTypography-root"><span
+                                    class="material-icons-round notranslate MuiIcon-root MuiIcon-fontSizeInherit css-1neevca-MuiIcon-root"
+                                    aria-hidden="true">home</span></span></a></li>
+                            <li aria-hidden="true"
+                                class="MuiBreadcrumbs-separator css-1pvpkhh-MuiBreadcrumbs-separator">/
+                            </li>
+                            <li class="MuiBreadcrumbs-li"><span
+                                    class="MuiTypography-root MuiTypography-button css-1i9c0i2-MuiTypography-root">Home</span>
+                            </li>
+                        </ol>
+                    </nav>
+                    <h6 class="MuiTypography-root MuiTypography-h6 MuiTypography-noWrap css-5y1ql5-MuiTypography-root">
+                        Home</h6></div>
+            </div>
+            <div class="MuiBox-root css-141xdzq">
+                <div class="MuiBox-root css-17n206e">
+                    <button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeSmall css-1vysi5m-MuiButtonBase-root-MuiIconButton-root"
+                            tabindex="0" type="button"><span
+                            class="spinner material-icons-round notranslate MuiIcon-root MuiIcon-fontSizeInherit css-1neevca-MuiIcon-root"
+                            aria-hidden="true" id="loader_spinner" style="display: none">autorenew</span></button>
+
+                </div>
+                <div id="search_bar_container" class="MuiBox-root css-1edr710" style="width: 20rem">
+                    <div class="css-8t2800">
+                        <div class="css-unz5y7"><span
+                                class="material-icons-round notranslate MuiIcon-root MuiIcon-fontSizeSmall css-1dstv92-MuiIcon-root"
+                                aria-hidden="true">search</span></div>
+                        <div class="MuiInputBase-root MuiInputBase-colorPrimary css-4fxh5e-MuiInputBase-root"><input
+                                id="search_bar"
+                                placeholder="Search for movies..." type="text"
+                                class="MuiInputBase-input css-10ukfau-MuiInputBase-input" value=""></div>
+                    </div>
+                </div>
+                <div class="MuiBox-root css-17n206e">
+                    <button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeSmall css-19p87m0-MuiButtonBase-root-MuiIconButton-root"
+                            tabindex="0" type="button"><span
+                            class="material-icons-round notranslate MuiIcon-root MuiIcon-fontSizeInherit text-white css-1neevca-MuiIcon-root"
+                            aria-hidden="true">menu</span></button>
+                    <button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeSmall css-1vysi5m-MuiButtonBase-root-MuiIconButton-root"
+                            tabindex="0" type="button"><span
+                            class="material-icons-round notranslate MuiIcon-root MuiIcon-fontSizeInherit css-1neevca-MuiIcon-root"
+                            aria-hidden="true">settings</span></button>
+                    <button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeSmall css-1vysi5m-MuiButtonBase-root-MuiIconButton-root"
+                            tabindex="0" type="button" aria-controls="notification-menu" aria-haspopup="true"
+                            variant="contained"><span
+                            class="material-icons-round notranslate MuiIcon-root MuiIcon-fontSizeInherit text-dark css-1neevca-MuiIcon-root"
+                            aria-hidden="true">notifications</span></button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="MuiBox-root css-x1q3ng">
+        <div class="MuiBox-root css-hc4z2v">
+            <div class="MuiGrid-root MuiGrid-container css-1vcxjca-MuiGrid-root" id="movie_container">
+                <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-lg-12 MuiGrid-grid-xl-5 css-1bkv0rv-MuiGrid-root">
+                    <div class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-1ktewt5-MuiPaper-root-MuiCard-root">
+                        <div class="MuiBox-root css-1vhjwv9">
+                            <div class="MuiBox-root css-7wmvu8"><span
+                                    class="MuiTypography-root MuiTypography-button css-1o41mzq-MuiTypography-root">
+                                 Welcome to,
+                            </span>
+                                <h3 class="MuiTypography-root MuiTypography-h3 css-ljk5kv-MuiTypography-root">
+                                    MovieHub! 🎬
+                                </h3><h6
+                                        class="MuiTypography-root MuiTypography-h6 css-1no8k7w-MuiTypography-root">
+                                    Dive into our collection of movies available for download.
+                                    <br>
+                                    <br>
+                                    We invite you to explore, enjoy,
+                                    and share your favorite films with our community.
+                                    <br>
+                                    <br>
+                                    consider contributing to our github codebase. Your input helps us improve and expand
+                                    our project!
+                                    <br>
+                                    <br>
+                                    Happy viewing!
+                                </h6></div>
+                            <a class="MuiTypography-root MuiTypography-button css-6r6b7a-MuiTypography-root"
+                               href="https://github.com/MatinGhanbari/MovieHub/">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="white" width="15" height="15"
+                                     viewBox="0 0 24 24">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                                &nbsp;&nbsp;&nbsp;Github repository<span
+                                    class="material-icons-round notranslate MuiIcon-root MuiIcon-fontSizeInherit css-3eliol-MuiIcon-root"
+                                    aria-hidden="true">arrow_forward</span></a></div>
+                    </div>
+                </div>
+                <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-lg-6 MuiGrid-grid-xl-5 css-1ycjkpa-MuiGrid-root">
+                    <div class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-a1zovi-MuiPaper-root-MuiCard-root">
+                        <div class="MuiBox-root css-7wmvu8">
+                            <div class="MuiBox-root css-1gu079p">
+                                <div>
+                                    <div
+                                            class="apexcharts-canvas apexchartsbpz3kk6ki apexcharts-theme-"
+                                            style="">
+                                        <div style="">
+                                            <img class="cover-image"
+                                                 src="https://m.media-amazon.com/images/M/MV5BOTUxMDY4MzItYjliYy00ZDkzLTg3Y2MtODMxN2EwMDM2OTViXkEyXkFqcGc@._V1_SX300.jpg">
+                                        </div>
+                                        <div class="apexcharts-yaxistooltip apexcharts-yaxistooltip-0 apexcharts-yaxistooltip-left apexcharts-theme-dark">
+                                            <div class="apexcharts-yaxistooltip-text"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="display: flex;justify-content: space-between;align-content: center;align-items: center">
+                                <div style="padding-right: 20px !important;">
+                                    <span class="MuiTypography-root MuiTypography-lg css-a3jw3h-MuiTypography-root">The Vault</span>
+                                    <div class="MuiBox-root css-14l70i8"><span
+                                            class="MuiTypography-root MuiTypography-button css-1t3vklz-MuiTypography-root">2021 <span
+                                            class="MuiTypography-root MuiTypography-button css-dsc10y-MuiTypography-root">What to watch</span></span>
+                                    </div>
+                                </div>
+                                <div style="display: flex;justify-content: center;align-items: center;align-content: center">
+                                    <a href="https://tokyo.saymyname.website/Movies/2021/9742794/" target="_blank">
+                                        <div class="hover-button MuiBox-root css-1std5id2"><span
+                                                class="material-icons-round notranslate MuiIcon-root MuiIcon-fontSizeDefault css-75zff6-MuiIcon-root"
+                                                aria-hidden="true">download</span></div>
+                                    </a>
+                                    <a href="https://dl.subtitlestar.com/dlsub/the-vault-2021-All.zip" target="_blank">
+                                        <div class="hover-button MuiBox-root css-1std5id2"><span
+                                                class="material-icons-round notranslate MuiIcon-root MuiIcon-fontSizeDefault css-75zff6-MuiIcon-root"
+                                                aria-hidden="true">closed_caption</span></div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-lg-6 MuiGrid-grid-xl-5 css-1ycjkpa-MuiGrid-root">
+                    <div class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-a1zovi-MuiPaper-root-MuiCard-root">
+                        <div class="MuiBox-root css-7wmvu8">
+                            <div class="MuiBox-root css-1gu079p">
+                                <div>
+                                    <div
+                                            class="apexcharts-canvas apexchartsbpz3kk6ki apexcharts-theme-"
+                                            style="">
+                                        <div style="">
+                                            <img class="cover-image"
+                                                 src="https://m.media-amazon.com/images/M/MV5BMTY0MTc3MzMzNV5BMl5BanBnXkFtZTcwNDE4MjE0NA@@._V1_SX300.jpg">
+                                        </div>
+                                        <div class="apexcharts-yaxistooltip apexcharts-yaxistooltip-0 apexcharts-yaxistooltip-left apexcharts-theme-dark">
+                                            <div class="apexcharts-yaxistooltip-text"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="display: flex;justify-content: space-between;align-content: center;align-items: center">
+                                <div>
+                                    <span class="MuiTypography-root MuiTypography-lg css-a3jw3h-MuiTypography-root">Source Code</span>
+                                    <div class="MuiBox-root css-14l70i8"><span
+                                            class="MuiTypography-root MuiTypography-button css-1t3vklz-MuiTypography-root">2011 <span
+                                            class="MuiTypography-root MuiTypography-button css-dsc10y-MuiTypography-root">What to watch</span></span>
+                                    </div>
+                                </div>
+                                <div style="display: flex;justify-content: center;align-items: center;align-content: center">
+                                    <a href="https://tokyo.saymyname.website/Movies/2011/0945513/" target="_blank">
+                                        <div class="hover-button MuiBox-root css-1std5id2"><span
+                                                class="material-icons-round notranslate MuiIcon-root MuiIcon-fontSizeDefault css-75zff6-MuiIcon-root"
+                                                aria-hidden="true">download</span></div>
+                                    </a>
+                                    <a href="https://dl.subtitlestar.com/dlsub/source-code-2011-All.zip"
+                                       target="_blank">
+                                        <div class="hover-button MuiBox-root css-1std5id2"><span
+                                                class="material-icons-round notranslate MuiIcon-root MuiIcon-fontSizeDefault css-75zff6-MuiIcon-root"
+                                                aria-hidden="true">closed_caption</span></div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-12">
-                <button type="submit" class="btn btn-primary w-100">Search</button>
+            <div class="MuiBox-root css-fi9pg3" id="search_results_section" style="display: none">
+                <h6 style="color: white"
+                    class="MuiTypography-root MuiTypography-h6 MuiTypography-noWrap css-5y1ql5-MuiTypography-root">
+                    Search Results</h6>
             </div>
-        </form>
-
-        <div id="results" class="mt-5"></div>
-
-        <div class="alert  alert-info">
-            <h4>We Need Your Help!</h4>
-            <p>For a better experience, we invite you to contribute!</p>
-            <p>To get started, please visit our github <a href="https://github.com/MatinGhanbari/MovieHub"target="_blank">repository</a>.</p>
-        </div>
-        <div class="alert  alert-light" style="bottom: 0; background-color: rgba(255, 255, 255, 0.336);"><i class="fa-solid fa-circle-info"></i> This project using <a href="https://almasmovie.website/" target="_blank">Almas Movie</a> library for download movies.
+            <div id="results_container">
+            </div>
         </div>
     </div>
+    <footer class="MuiBox-root css-fi9pg3" direction="row">
+        <div class="MuiBox-root css-1uvnk1p" xs="12"><span
+                class="MuiTypography-root MuiTypography-button css-69k5rw-MuiTypography-root">
+            @ 2025, Made with 🤍&nbsp;by
+            <a class="MuiTypography-root MuiTypography-button css-1wcgkqh-MuiTypography-root"
+               href="https://github.com/MatinGhanbari">Matin Ghanbari</a>for a better web</span></div>
 
-    <footer>
-        <div class="container">
-            <p>
-                Made with 🤍 by <a href="https://github.com/MatinGhanbari">Matin Ghanbari</a>
-            </p>
-
-            <div class="social-icons">
-                <a href="https://github.com/MatinGhanbari" role="button">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://linkedin.com/in/matinghanbari" role="button">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-            </div>
-        </div>
     </footer>
-
-    <script src="index.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </div>
+
+<svg id="SvgjsSvg1001" width="2" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1"
+     xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev"
+     style="overflow: hidden; top: -100%; left: -100%; position: absolute; opacity: 0;">
+    <defs id="SvgjsDefs1002"></defs>
+    <polyline id="SvgjsPolyline1003" points="0,0"></polyline>
+    <path id="SvgjsPath1004" d="M0 0 "></path>
+</svg>
+
+<iframe id="gXn3KH9A" frameborder="0"
+        src="chrome-extension://ekhagklcjbdpajgpjgmbionohlpdbjgc/translateSandbox/translateSandbox.html"
+        style="width: 0px; height: 0px; display: none;">
+</iframe>
+
+<iframe id="AEHqwnYU" frameborder="0"
+        src="chrome-extension://ekhagklcjbdpajgpjgmbionohlpdbjgc/translateSandbox/translateSandbox.html"
+        style="width: 0px; height: 0px; display: none;">
+</iframe>
+
+<script src="static/js/index.js"></script>
 </body>
 </html>
