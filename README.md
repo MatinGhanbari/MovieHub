@@ -48,3 +48,5 @@ Thank you for your contributions!
 
 ## License
 This project is licensed under the [MIT](LICENSE) License - see the LICENSE file for details.
+
+![counter](https://profile-counter.glitch.me/matinghanbari-moviehub/count.svg)
